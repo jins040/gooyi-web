@@ -78,12 +78,22 @@ DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+# RDS 세팅
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test',
-        'USER': 'root',
-        'PASSWORD': '0409',
-        'HOST': '127.0.0.1',
-        'PORT': '3307'
+        'NAME': 'jins_database',
+        'USER': 'jins',
+        'PASSWORD': '04090409',
+        'HOST': 'mydbinstance-maria.csqkumwjtibh.ap-northeast-2.rds.amazonaws.com',
+        'PORT': '3306'
+
+# 로컬 세팅
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'test',
+#        'USER': 'root',
+#        'PASSWORD': '0409',
+#        'HOST': '127.0.0.1',
+#        'PORT': '3307'
     }
 }
 
