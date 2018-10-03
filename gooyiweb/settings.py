@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'home.User'
 
 # Application definition
 
@@ -37,8 +38,56 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home'
+    'home',
+    'social_django',
 ]
+
+###################### LOGIN FOR GOOGLE ACCOUNT #############################
+
+# AUTHENTICATION_BACKENDS = (
+#  'social_core.backends.open_id.OpenIdAuth',
+#  'social_core.backends.google.GoogleOpenId',
+#  'social_core.backends.google.GoogleOAuth2',
+#  'django.contrib.auth.backends.ModelBackend',
+# )
+
+# SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+# 'context_processors': [
+# ...
+#                 'social_django.context_processors.backends',
+#                 'social_django.context_processors.login_redirect',
+#             ],
+# SOCIAL_AUTH_PIPELINE = (
+#     'social.pipeline.social_auth.social_details',
+#     'social.pipeline.social_auth.social_uid',
+#     'social.pipeline.social_auth.auth_allowed',
+#     'social.pipeline.social_auth.social_user',
+#     'social.pipeline.user.get_username',
+#     'social.pipeline.user.create_user',
+#     'social.pipeline.social_auth.associate_user',
+#     'social.pipeline.debug.debug',
+#     'social.pipeline.social_auth.load_extra_data',
+#     'social.pipeline.user.user_details',
+#     'social.pipeline.debug.debug',
+# )
+
+# SOCIAL_AUTH_GOOGLE_OAUTH2_IGNORE_DEFAULT_SCOPE = True
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+# 'https://www.googleapis.com/auth/userinfo.email',
+# 'https://www.googleapis.com/auth/userinfo.profile'
+# ]
+# # Google+ SignIn (google-plus)
+# SOCIAL_AUTH_GOOGLE_PLUS_IGNORE_DEFAULT_SCOPE = True
+# SOCIAL_AUTH_GOOGLE_PLUS_SCOPE = [
+# 'https://www.googleapis.com/auth/plus.login',
+# 'https://www.googleapis.com/auth/userinfo.email',
+# 'https://www.googleapis.com/auth/userinfo.profile'
+# ]
+
+# LOGIN_URL = '/account/login/'
+
+###################### LOGIN FOR GOOGLE ACCOUNT #############################
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,7 +117,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'gooyiweb.wsgi.application'
+# WSGI_APPLICATION = 'gooyiweb.wsgi.application'
 
 
 # Database
@@ -76,16 +125,16 @@ WSGI_APPLICATION = 'gooyiweb.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
 # RDS 세팅
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jins_database',
-        'USER': 'jins',
-        'PASSWORD': '04090409',
-        'HOST': 'mydbinstance-maria.csqkumwjtibh.ap-northeast-2.rds.amazonaws.com',
-        'PORT': '3306'
+        #'ENGINE': 'django.db.backends.mysql',
+        #'NAME': 'jins_database',
+        #'USER': 'jins',
+        #'PASSWORD': '04090409',
+        #'HOST': 'mydbinstance-maria.csqkumwjtibh.ap-northeast-2.rds.amazonaws.com',
+        #'PORT': '3306'
 
 # 로컬 세팅
 #        'ENGINE': 'django.db.backends.mysql',
@@ -133,6 +182,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+LOGIN_REDIRECT_URL = 'index'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
