@@ -1,12 +1,17 @@
-{% extends './base.html' %}
+{% extends 'home/base.html' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}로그인{% endblock %}
 
 {% block content %}
   <h2>Login</h2>
-  <form method="post">
-    {% csrf_token %}
-     {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
+
+  {% if user.is_authenticated %}
+  	이미 로그인 중입니다.
+  {% else %}
+	  <form method="post">
+	    {% csrf_token %}
+	     {{ form.as_p }}
+	    <button type="submit">Login</button>
+	  </form>
+  {% endif %}
 {% endblock %}

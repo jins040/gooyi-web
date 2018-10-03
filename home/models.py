@@ -14,7 +14,7 @@ class MyUserManager(BaseUserManager):
         """
         Creates and saves a User with the given email and password.
         """
-        if not email:
+        if not email :
             raise ValueError('The Email must be set')
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
@@ -62,3 +62,4 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.email
+

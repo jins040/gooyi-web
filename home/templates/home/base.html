@@ -1,0 +1,24 @@
+<html>
+	<h1>This is Gooyi Web Application</h1>
+	<header>
+		<title>{% block title %}{% endblock %}</title>
+	</header>
+
+	<body>
+		  {% if user.is_authenticated %}
+		  <p>
+		  	<a href="{% url 'home:logout' %}?next={% url 'home:index' %}">logout</a>
+		  </p>
+		  {% else %}
+			<p>
+		  		<a href="{% url 'home:signup' %}" >signup </a>
+		  	</p>
+		
+			<p>
+				<a href="{% url 'home:login' %}" >login </a>
+			</p>
+		
+		  {% endif %}
+		{% block content %}{% endblock %}
+	</body>
+</html>
